@@ -9,56 +9,15 @@ Nothing really special. It depends on the opscode's *cron* cookbook in order to 
 
 Attributes
 ----------
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['ntpdate']['use_ntp_config']</tt></td>
-    <td>String</td>
-    <td>whether to use the ntp.conf file config</td>
-    <td><tt>no</tt></td>
-  </tr>
-    <tr>
-    <td><tt>['ntpdate']['config_folder']</tt></td>
-    <td>String</td>
-    <td>Where lays the config file</td>
-    <td><tt>/etc/default</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['ntpdate']['config_file']</tt></td>
-    <td>String</td>
-    <td>Config file name</td>
-    <td><tt>ntpdate</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['ntpdate']['ntp_servers']</tt></td>
-    <td>StringArray</td>
-    <td>Which time servers to sync from.</td>
-    <td><tt>%w(pool.ntp.org)</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['ntpdate']['ntp_options']</tt></td>
-    <td>String</td>
-    <td>Additional options for ntpdate</td>
-    <td><tt>nil</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['ntpdate']['package_name']</tt></td>
-    <td>StringArray</td>
-    <td>Which packages to install</td>
-    <td><tt>%w(ntpdate)</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['ntpdate']['crontab_file']</tt></td>
-    <td>String</td>
-    <td>Crontab file name to create in /etc/cron.d directory</td>
-    <td><tt>ntpdate</tt></td>
-  </tr>
-</table>
+|Key|Type|Description|Default|
+| ------ | :-------: | ---------- | :---------:|
+|['ntpdate']['use\_ntp\_config']|String|whether to use the ntp.conf file config|'no'|
+|['ntpdate']['config_folder']|String|Where lays the config file|'/etc/default'|
+|['ntpdate']['config_file']|String|Config file name|'ntpdate'|
+|['ntpdate']['ntp_servers']|StringArray|Which time servers to sync from|%w(pool.ntp.org)|
+|['ntpdate']['ntp_options']|String|Additional options for ntpdate|nil|
+|['ntpdate']['package_name']|StringArray|Which packages to install|%w(ntpdate)|
+|['ntpdate']['crontab_file']|String|Crontab file name to create in /etc/cron.d directory|ntpdate|
 
 For the `[:ntpdate][:crontab]` directives check the *cron* cookbook from *opscode*.
 
@@ -73,9 +32,9 @@ Usage
   	"ntp_servers": %w{ntp1.somedomain.com ntp2.somedomain.com},
   	"crontab": {
   		"comment": "This Cron sets time on Sundays at 6:00 O'clock",
-  		"minute": '0',
-  		"hour":   '6',
-  		"day":    '7'
+  		"minute": "0",
+  		"hour":   "6",
+  		"day":    "7"
   	}
   },
   "run_list": [
