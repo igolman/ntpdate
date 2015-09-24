@@ -3,6 +3,10 @@ ntpdate CHANGELOG
 
 This file is used to list changes made in each version of the ntpdate cookbook.
 
+1.0.0
+-----
+- [golman] - Ready for the first release.
+
 0.1.0
 -----
 - [golman] - Initial release of ntpdate
