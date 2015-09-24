@@ -1,5 +1,5 @@
 name             'ntpdate'
-maintainer       'Ivan Golman	'
+maintainer       'Ivan Golman'
 maintainer_email 'ivan.golman@gmail.com'
 license          'MIT License'
 description      'Installs/Configures ntpdate'
