@@ -11,7 +11,7 @@ template node[:ntpdate][:config_file] do
   action :create
 end
 
-cron_d "ntpdate" do
+cron_d node[:ntpdate][:crontab_file] do
   action :create
   minute      node[:ntpdate][:crontab][:minute]
   hour        node[:ntpdate][:crontab][:hour]
