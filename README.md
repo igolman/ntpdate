@@ -1,11 +1,11 @@
 ntpdate Cookbook
 ================
-Installs and configures the `ntpdate`.(Although it later uses the `ntpdate-debian` binary, see `man ntpdate`)
+Installs `ntpdate` and configures it to run as a scheduled job.(Although it later uses the `ntpdate-debian` binary, see `man ntpdate`).
+The reason for this one may found after struggling to sync the time via NTP daemon without exposing the external network interface to the world.
 
 Requirements
 ------------
-Nothing really special. It depends on the opscode's *cron* cookbook
-in order to lay the cronjob.
+Nothing really special. It depends on the opscode's *cron* cookbook in order to lay the cronjob.
 
 Attributes
 ----------
