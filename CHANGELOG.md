@@ -1,7 +1,9 @@
 ntpdate CHANGELOG
 =================
 
-This file is used to list changes made in each version of the ntpdate cookbook.
+1.0.1
+-----
+- [golman] - Cronjob stdout to /dev/null
 
 1.0.0
 -----
