@@ -3,6 +3,8 @@ ntpdate Cookbook
 Installs `ntpdate` and configures it to run as a scheduled job.(Although it later uses the `ntpdate-debian` binary, see `man ntpdate`).
 The reason for this one may found after struggling to sync the time via NTP daemon without exposing the external network interface to the world.
 
+By default the cookbook will remove NTP package (if installed).
+
 Requirements
 ------------
 Nothing really special. It depends on the opscode's *cron* cookbook in order to lay the cronjob.
@@ -18,6 +20,8 @@ Attributes
 |['ntpdate']['ntp_options']|String|Additional options for ntpdate|nil|
 |['ntpdate']['package_name']|StringArray|Which packages to install|%w(ntpdate)|
 |['ntpdate']['crontab_file']|String|Crontab file name to create in /etc/cron.d directory|ntpdate|
+|['ntpdate']['ntp\_pkg\_remove']|Boolean|Defines if the NTP packet should be removed|true|
+|['ntpdate']['ntp\_pkg\_name']|String|NTP Package name|ntp|
 
 For the `[:ntpdate][:crontab]` directives check the *cron* cookbook from *opscode*.
 

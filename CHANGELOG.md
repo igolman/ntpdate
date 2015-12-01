@@ -1,6 +1,10 @@
 ntpdate CHANGELOG
 =================
 
+1.1.0
+-----
+- [golman] - NTP package leads to race condition on port. Will be removed by deafult, unless *node[:ntpdate][:ntp\_pkg\_remove]* directive is set to *false*
+
 1.0.1
 -----
 - [golman] - Cronjob stdout to /dev/null

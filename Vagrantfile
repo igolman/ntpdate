@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
         node.vm.box = 'ubuntu-12.04-amd64-vbox.box'
         node.vm.hostname = 'ntpdate'
         node.vm.network :private_network, ip: '10.0.33.17'
-        node.vm.provision :shell, :inline => 'apt-get update'
+#        node.vm.provision :shell, :inline => 'apt-get update; apt-get install ntp -y'
         node.vm.provision :chef_solo do |chef|
             chef.log_level = :debug
             chef.json ={
