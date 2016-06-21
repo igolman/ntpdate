@@ -1,6 +1,11 @@
 ntpdate CHANGELOG
 =================
 
+
+1.2.1
+-----
+- [golman] - foodcritic compliance made.
+
 1.2.0
 -----
 - [golman] - *node[:ntpdate][:enable]* control directive added. By default is `true`.  
