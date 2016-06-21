@@ -1,3 +1,5 @@
+action = node[:ntpdate][:enable] ? :create : :delete
+
 template node[:ntpdate][:config_file] do
   path "#{node[:ntpdate][:config_folder]}/#{node[:ntpdate][:config_file]}"
   source "#{node[:ntpdate][:config_file]}.erb"
@@ -8,11 +10,11 @@ template node[:ntpdate][:config_file] do
     :ntp_servers => node[:ntpdate][:ntp_servers].join(" "),
     :ntp_options => node[:ntpdate][:ntp_options]
   })
-  action :create
+  action action
 end
 
 cron_d node[:ntpdate][:crontab_file] do
-  action :create
+  action action
   minute      node[:ntpdate][:crontab][:minute]
   hour        node[:ntpdate][:crontab][:hour]
   day         node[:ntpdate][:crontab][:day]

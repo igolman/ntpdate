@@ -13,6 +13,7 @@ Attributes
 ----------
 |Key|Type|Description|Default|
 | ------ | :-------: | ---------- | :---------:|
+|['ntpdate']['enable']|Boolean|enable or disable ALL actions|true|
 |['ntpdate']['use\_ntp\_config']|String|whether to use the ntp.conf file config|'no'|
 |['ntpdate']['config_folder']|String|Where lays the config file|'/etc/default'|
 |['ntpdate']['config_file']|String|Config file name|'ntpdate'|
@@ -46,6 +47,29 @@ Usage
   ]
 }
 ```
+
+#### disabling ALL actions
+but leaving the recipe in *run_list()* and the role configuration *(sometimes is useful)*. This will remove all the configuration files the cookbook normally creates *but* will leave the packages as they are *(actual stand)*.
+
+```json
+{
+  "name":"my_node",
+  "ntpdate": {
+   "enable": false
+  	"ntp_servers": %w{ntp1.somedomain.com ntp2.somedomain.com},
+  	"crontab": {
+  		"comment": "This Cron sets time on Sundays at 6:00 O'clock",
+  		"minute": "0",
+  		"hour":   "6",
+  		"day":    "7"
+  	}
+  },
+  "run_list": [
+    "recipe[ntpdate]"
+  ]
+}
+```
+
 
 Contributing
 ------------

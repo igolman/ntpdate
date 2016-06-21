@@ -25,3 +25,4 @@ default[:ntpdate][:crontab][:env]     = nil
 default[:ntpdate][:crontab_file]      = 'ntpdate'
 default[:ntpdate][:ntp_pkg_remove]    = true
 default[:ntpdate][:ntp_pkg_name]      = 'ntp'
+default[:ntpdate][:enable]            = true

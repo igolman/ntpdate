@@ -1,6 +1,10 @@
 ntpdate CHANGELOG
 =================
 
+1.2.0
+-----
+- [golman] - *node[:ntpdate][:enable]* control directive added. By default is `true`.  
+
 1.1.0
 -----
 - [golman] - NTP package leads to race condition on port. Will be removed by deafult, unless *node[:ntpdate][:ntp\_pkg\_remove]* directive is set to *false*
