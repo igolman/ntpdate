@@ -3,7 +3,7 @@
 
 # Set to "yes" to take the server list from /etc/ntp.conf, from package ntp,
 # so you only have to keep it in one place.
-NTPDATE_USE_NTP_CONF=<%= node[:ntpdate][:use_ntp_config]%>
+NTPDATE_USE_NTP_CONF=<%= node['ntpdate']['use_ntp_config']%>
 
 # List of NTP servers to use  (Separate multiple servers with spaces.)
 # Not used if NTPDATE_USE_NTP_CONF is yes.
