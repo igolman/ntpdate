@@ -1,6 +1,18 @@
 ntpdate CHANGELOG
 =================
 
+1.3.0
+-----
+- [golman] 
+  - `cron` cookbook's dependency updated.
+  - `kitchen` test suite added.
+  - support Chef v13 and v14 tested.
+  - `cookstyle` linter applied.
+
+1.2.1
+-----
+- [golman] - foodcritic compliance made.
+
 1.2.0
 -----
 - [golman] - *node[:ntpdate][:enable]* control directive added. By default is `true`.  

@@ -61,11 +61,11 @@ but leaving the recipe in *run_list()* and the role configuration *(sometimes is
   		"comment": "This Cron sets time on Sundays at 6:00 O'clock",
   		"minute": "0",
   		"hour":   "6",
-  		"day":    "7"
+  		"weekday": "sun"
   	}
   },
   "run_list": [
-    "recipe[ntpdate]"
+    "recipe[ntpdate::default]"
   ]
 }
 ```

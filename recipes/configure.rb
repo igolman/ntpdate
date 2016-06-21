@@ -6,10 +6,10 @@ template node['ntpdate']['config_file'] do
   owner 'root'
   group 'root'
   mode '0644'
-  variables ({
-    :ntp_servers => node['ntpdate']['ntp_servers'].join(" "),
-    :ntp_options => node['ntpdate']['ntp_options']
-  })
+  variables(
+    ntp_servers: node['ntpdate']['ntp_servers'].join(' '),
+    ntp_options: node['ntpdate']['ntp_options']
+  )
   action action
 end
 
@@ -23,7 +23,7 @@ cron_d node['ntpdate']['crontab_file'] do
   command     node['ntpdate']['crontab']['command']
   user        node['ntpdate']['crontab']['user']
   mailto      node['ntpdate']['crontab']['mailto']
-  path        node['ntpdate']['crontab']['path'].join(":")
+  path        node['ntpdate']['crontab']['path'].join(':')
   home        node['ntpdate']['crontab']['home_folder']
   shell       node['ntpdate']['crontab']['shell']
   environment node['ntpdate']['crontab']['env']
