@@ -1,5 +1,11 @@
-# removing installed NTP Packet ( activated NTP service leads to race condition on network port).
+#
+# Cookbook:: ntpdate
+# Recipe:: install
+#
+# Copyright:: Ivan Golman <ivan.golman@gmail.com>
+#
 
+# removing installed NTP Packet ( activated NTP service leads to race condition on network port).
 package node['ntpdate']['ntp_pkg_name'] do
   action node['ntpdate']['enable'] ? 'remove' : 'nothing'
   only_if { node['ntpdate']['ntp_pkg_remove'] }

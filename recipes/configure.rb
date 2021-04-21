@@ -1,3 +1,10 @@
+#
+# Cookbook:: ntpdate
+# Recipe:: configure
+#
+# Copyright:: Ivan Golman <ivan.golman@gmail.com>
+#
+
 action = node['ntpdate']['enable'] ? 'create' : 'delete'
 
 template node['ntpdate']['config_file'] do

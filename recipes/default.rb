@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: ntpdate
+# Cookbook:: ntpdate
 # Recipe:: default
 #
-# Copyright 2015, Ivan Golman
+# Copyright:: Ivan Golman <ivan.golman@gmail.com>
 #
 
 include_recipe 'ntpdate::install'

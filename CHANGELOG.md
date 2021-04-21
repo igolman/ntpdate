@@ -1,6 +1,14 @@
 ntpdate CHANGELOG
 =================
 
+1.4.0
+-----
+- [golman]
+    - added support chef `v15` and `v16`
+    - `kitchen` test suite switched to `dokken/inspec`
+    - some code linting done.
+    - EOL `foodcritic` removed.
+
 1.3.0
 -----
 - [golman] 

@@ -1,60 +1,186 @@
 ---
 driver:
+  name: dokken
   provision: true
-  name: vagrant
-  #require_chef_omnibus: 12.19.36 #13.12.3
-  vagrantfiles:
-    - kitchen_vagrant.rb
-  customize:
-    memory: 512
-    cpus: 1
+  use_sudo: false
+  privileged: true
+  pull_chef_image: false
+  pull_platform_image: false
+  clean_dokken_sandbox: false
+  intermediate_instructions:
+    - RUN /usr/bin/apt-get update --fix-missing
+  use_cache: true
+  hostname: ntpdate.example.com
 
 provisioner:
-  name: chef_zero
+  name: dokken
+  deprecations_as_errors: true
+  multiple_converge: 2
+  enforce_idempotency: true
+  client_rb:
+    file_atomic_update: false
+
+transport:
+  name: dokken
+
+verifier:
+  name: inspec
 
 platforms:
-  - name: ubuntu-12.04
-    driver:
-      require_chef_omnibus: '12.19.36'
   - name: ubuntu-14.04
+    driver:
+      image: dokken/ubuntu-14.04
+      pid_one_command: /sbin/init
+      cap_add:
+        - SYS_ADMIN
   - name: ubuntu-16.04
+    driver:
+      image: dokken/ubuntu-16.04
+      pid_one_command: /bin/systemd
   - name: ubuntu-18.04
+    driver:
+      image: dokken/ubuntu-18.04
+      pid_one_command: /bin/systemd
+  - name: ubuntu-20.04
+    driver:
+      image: dokken/ubuntu-20.04
+      pid_one_command: /bin/systemd
 
 suites:
-  - name: default
+  - name: default_chef13
+    driver:
+      chef_version: '13.12.3'
+    verifier: &default_verifier
+      inspec_tests:
+        - test/integration/default/inspec
     run_list:
       - recipe[ntpdate]
 
-  - name: custom
+  - name: default_chef14
+    driver:
+      chef_version: '14.15.6'
+    verifier:
+      <<: *default_verifier
     run_list:
-    - recipe[ntpdate]
-    attributes:
+      - recipe[ntpdate]
+
+  - name: default_chef15
+    driver:
+      chef_version: '15.12.24'
+    verifier:
+      <<: *default_verifier
+    run_list:
+      - recipe[ntpdate]
+
+  - name: default_chef16
+    driver:
+      chef_version: '16.1.0'
+    verifier:
+      <<: *default_verifier
+    run_list:
+      - recipe[ntpdate]
+
+  - name: custom_chef13
+    driver:
+      chef_version: '13.12.3'
+    verifier: &custom_verifier
+      inspec_tests:
+        - test/integration/custom/inspec
+    run_list:
+      - recipe[ntpdate]
+    attributes: &custom_attributes
       ntpdate:
         enable: true
         ntp_servers:
-        - 0.de.pool.ntp.org
-        - 1.de.pool.ntp.org
-        - 2.de.pool.ntp.org
-        - 3.de.pool.ntp.org
+          - 0.de.pool.ntp.org
+          - 1.de.pool.ntp.org
+          - 2.de.pool.ntp.org
+          - 3.de.pool.ntp.org
         crontab:
           comment: 'This cron syncs the time on Sundays mornings.'
           minute: 0
           hour: 6
           weekday: sun
 
-  - name: disabled
+  - name: custom_chef14
+    driver:
+      chef_version: '14.15.6'
+    verifier:
+      <<: *custom_verifier
     run_list:
-    - recipe[ntpdate]
+      - recipe[ntpdate]
     attributes:
+      <<: *custom_attributes
+
+  - name: custom_chef15
+    driver:
+      chef_version: '15.12.24'
+    verifier:
+      <<: *custom_verifier
+    run_list:
+      - recipe[ntpdate]
+    attributes:
+      <<: *custom_attributes
+
+  - name: custom_chef16
+    driver:
+      chef_version: '16.1.0'
+    verifier:
+      <<: *custom_verifier
+    run_list:
+      - recipe[ntpdate]
+    attributes:
+      <<: *custom_attributes
+
+  - name: disabled_chef13
+    driver:
+      chef_version: '13.12.3'
+    verifier: &disabled_verifier
+      inspec_tests:
+        - test/integration/disabled/inspec
+    run_list:
+      - recipe[ntpdate]
+    attributes: &disabled_attributes
       ntpdate:
         enable: false
         ntp_servers:
-        - server 0.de.pool.ntp.org
-        - server 1.de.pool.ntp.org
-        - server 2.de.pool.ntp.org
-        - server 3.de.pool.ntp.org
+          - server 0.de.pool.ntp.org
+          - server 1.de.pool.ntp.org
+          - server 2.de.pool.ntp.org
+          - server 3.de.pool.ntp.org
         crontab:
           comment: 'This should never appear.'
           minute: 0
           hour: 6
           day: 7
+
+  - name: disabled_chef14
+    driver:
+      chef_version: '14.15.6'
+    verifier:
+      <<: *disabled_verifier
+    run_list:
+      - recipe[ntpdate]
+    attributes:
+      <<: *disabled_attributes
+
+  - name: disabled_chef15
+    driver:
+      chef_version: '15.12.24'
+    verifier:
+      <<: *disabled_verifier
+    run_list:
+      - recipe[ntpdate]
+    attributes:
+      <<: *disabled_attributes
+
+  - name: disabled_chef16
+    driver:
+      chef_version: '16.1.0'
+    verifier:
+      <<: *disabled_verifier
+    run_list:
+      - recipe[ntpdate]
+    attributes:
+      <<: *disabled_attributes
+

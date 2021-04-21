@@ -1,3 +1,10 @@
+#
+# Cookbook:: ntpdate
+# Attributes:: default
+#
+# Copyright:: Ivan Golman <ivan.golman@gmail.com>
+#
+
 default['ntpdate']['use_ntp_config'] = 'no'
 default['ntpdate']['config_folder'] = '/etc/default'
 default['ntpdate']['config_file'] = 'ntpdate'
@@ -12,13 +19,7 @@ default['ntpdate']['crontab']['weekday'] = '*'
 default['ntpdate']['crontab']['command'] = '/usr/sbin/ntpdate-debian > /dev/null'
 default['ntpdate']['crontab']['user'] = 'root'
 default['ntpdate']['crontab']['mailto'] = 'root'
-default['ntpdate']['crontab']['path'] =
-  %w( /usr/local/bin
-    /usr/local/sbin
-    /usr/bin
-    /usr/sbin
-    /bin
-    /sbin )
+default['ntpdate']['crontab']['path'] = %w( /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin)
 default['ntpdate']['crontab']['home_folder'] = '/root'
 default['ntpdate']['crontab']['shell'] = '/bin/bash'
 default['ntpdate']['crontab']['comment'] = 'Please change me!'

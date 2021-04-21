@@ -1,16 +1,4 @@
-Metrics/LineLength:
-  Max: 140
-Metrics/MethodLength:
-  Max: 30
-Metrics/AbcSize:
-  Max: 30
-RegexpLiteral:
-  EnforcedStyle: slashes
 AllCops:
-  TargetRubyVersion: 2.1
-  Exclude:
-    - Berksfile
-    - metadata.rb
-    - Vagrantfile
-    - attributes/*.rb
-    - kitchen_vagrant.rb
+  TargetRubyVersion: 2.6
+RegexpLiteral:
+  EnforcedStyle: percent_r
