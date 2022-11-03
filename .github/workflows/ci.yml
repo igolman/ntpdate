@@ -14,6 +14,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Run yaml Lint
         uses: actionshub/yamllint@main
+
   mdl:
     runs-on: ubuntu-latest
     steps:
@@ -21,6 +22,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Run Markdown Lint
         uses: actionshub/markdownlint@main
+
   cookstyle:
     runs-on: ubuntu-latest
     steps:
@@ -41,7 +43,7 @@ jobs:
           name: cookstyle-results
           path: cookstyle.xml
 
-  dokken:
+  kitchen:
     needs:
       - yamllint
       - mdl
@@ -75,23 +77,23 @@ jobs:
         #  - os: debian-10
         #    suite: openjdk-pkg-8
       fail-fast: false
-      steps:
-        - name: Check out code
-          uses: actions/checkout@v2
-        - name: Install Chef
-          uses: actionshub/chef-install@main
-        - name: Kitchen Tests
-          uses: actionshub/test-kitchen@main
-          env:
-            CHEF_LICENSE: accept-no-persist
-            KITCHEN_LOCAL_YAML: .kitchen.yml
-          with:
-            suite: ${{ matrix.suite }}
-            os: ${{ matrix.os }}
-        - name: Report
-          uses: actions/upload-artifact@v3
-          if: success() || failure()
-          with:
-            name: kitchen-results
-            path: kitchen-reports/*.xml
-            if-no-files-found: error
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Install Chef
+        uses: actionshub/chef-install@main
+      - name: Kitchen Tests
+        uses: actionshub/test-kitchen@main
+        env:
+          CHEF_LICENSE: accept-no-persist
+          KITCHEN_LOCAL_YAML: .kitchen.yml
+        with:
+          suite: ${{ matrix.suite }}
+          os: ${{ matrix.os }}
+      - name: Report
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: kitchen-results
+          path: kitchen-reports/*.xml
+          if-no-files-found: error
