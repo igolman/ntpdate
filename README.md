@@ -7,10 +7,12 @@ By default the cookbook will remove NTP package *(if installed)*.
 
 Requirements
 ------------
+
 Nothing really special. It depends on the opscode's *cron* cookbook in order to lay the cronjob.
 
 Attributes
 ----------
+
 |Key|Type|Description|Default|
 | ------ | :-------: | ---------- | :---------:|
 |['ntpdate']['enable']|Boolean|enable or disable ALL actions|true|
@@ -28,6 +30,7 @@ For the `[:ntpdate][:crontab]` directives check the *cron* cookbook from *opscod
 
 Usage
 -----
+
 #### ntpdate::default
 
 ```json
@@ -48,7 +51,9 @@ Usage
 }
 ```
 
-#### disabling ALL actions
+disabling ALL actions
+---------------------
+
 but leaving the recipe in *run_list()* and the role configuration *(sometimes is useful)*. This will remove all the configuration files the cookbook normally creates *but* will leave the packages as they are *(actual stand)*.
 
 ```json
@@ -73,6 +78,7 @@ but leaving the recipe in *run_list()* and the role configuration *(sometimes is
 
 Contributing
 ------------
+
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -82,4 +88,5 @@ Contributing
 
 License and Authors
 -------------------
+
 Authors: Ivan Golman (<ivan.golman@gmail.com>)
