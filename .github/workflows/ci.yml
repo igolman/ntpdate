@@ -44,6 +44,7 @@ jobs:
           path: cookstyle.xml
 
   kitchen:
+    runs-on: ubuntu-latest
     needs:
       - yamllint
       - mdl
