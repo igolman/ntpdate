@@ -53,10 +53,10 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-14.04
-          - ubuntu-16.04
-          - ubuntu-18.04
-          - ubuntu-20.04
+          - ubuntu-1404
+          - ubuntu-1604
+          - ubuntu-1804
+          - ubuntu-2004
         suite:
           - default-chef13
           - default-chef14
