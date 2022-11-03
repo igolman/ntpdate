@@ -1,6 +1,6 @@
 ---
 name: 'Test Report'
-on:
+"on":
   workflow_run:
     workflows:
       - CI
