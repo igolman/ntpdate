@@ -4,20 +4,20 @@ ntpdate CHANGELOG
 1.4.1
 -----
 - [golman]
-    - configured `github actions`.
-    - added tests reporting.
+  - configured `github actions`.
+  - added tests reporting.
 
 1.4.0
 -----
 - [golman]
-    - added support chef `v15` and `v16`
-    - `kitchen` test suite switched to `dokken/inspec`
-    - some code linting done.
-    - EOL `foodcritic` removed.
+  - added support chef `v15` and `v16`
+  - `kitchen` test suite switched to `dokken/inspec`
+  - some code linting done.
+  - EOL `foodcritic` removed.
 
 1.3.0
 -----
-- [golman] 
+- [golman]
   - `cron` cookbook's dependency updated.
   - `kitchen` test suite added.
   - support Chef v13 and v14 tested.
@@ -25,27 +25,29 @@ ntpdate CHANGELOG
 
 1.2.1
 -----
-- [golman] - foodcritic compliance made.
+- [golman] 
+  - foodcritic compliance made.
 
 1.2.0
 -----
-- [golman] - *node[:ntpdate][:enable]* control directive added. By default is `true`.  
+- [golman] 
+  - *node[:ntpdate][:enable]* control directive added. Default is `true`.
 
 1.1.0
 -----
-- [golman] - NTP package leads to race condition on port. Will be removed by deafult, unless *node[:ntpdate][:ntp\_pkg\_remove]* directive is set to *false*
+  - [golman] - NTP package leads to race condition on port. Will be removed by deafult, unless *node[:ntpdate][:ntp\_pkg\_remove]* directive is set to *false*
 
 1.0.1
 -----
-- [golman] - Cronjob stdout to /dev/null
+  - [golman] - Cronjob stdout to /dev/null
 
 1.0.0
 -----
-- [golman] - Ready for the first release.
+  - [golman] - Ready for the first release.
 
 0.1.0
 -----
-- [golman] - Initial release of ntpdate
+  - [golman] - Initial release of ntpdate
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
