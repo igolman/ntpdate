@@ -1,7 +1,8 @@
 ntpdate CHANGELOG
 =================
 
-# 1.4.1 #
+1.4.1
+-----
 
 - configured `github actions`.
 - added tests reporting.
