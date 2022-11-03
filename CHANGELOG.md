@@ -41,14 +41,14 @@ ntpdate CHANGELOG
 1.0.1
 -----
 
-- Cronjob stdout to /dev/null
+- Cronjob stdout to `/dev/null`
 
 1.0.0
 -----
 
 - Ready for the first release.
 
-0.9.0
+0.1.0
 -----
 
 - Initial release of ntpdate
