@@ -20,7 +20,7 @@ ntpdate CHANGELOG
 
 - `cron` cookbook's dependency updated.
 - `kitchen` test suite added.
-- support Chef v13 and v14 tested.
+- support Chef `v13` and `v14` tested.
 - `cookstyle` linter applied.
 
 1.2.1
@@ -31,14 +31,12 @@ ntpdate CHANGELOG
 1.2.0
 -----
 
-- *node[:ntpdate][:enable]* control directive added. Default is `true`.
+- `node[:ntpdate][:enable]` control directive added. Default is `true`.
 
 1.1.0
 -----
 
-- NTP package leads to race condition on port. <br>
-Will be removed by deafult, unless `node[:ntpdate][:ntp_pkg_remove]` <br>
-directive is set to *false*
+- NTP package leads to race condition on port. Will be removed by deafult, unless `node[:ntpdate][:ntp_pkg_remove]` directive is set to *false*
 
 1.0.1
 -----
@@ -50,7 +48,7 @@ directive is set to *false*
 
 - Ready for the first release.
 
-0.1.0
+0.9.0
 -----
 
 - Initial release of ntpdate
