@@ -1,5 +1,6 @@
 ntpdate Cookbook
-================
+----------------
+
 Installs `ntpdate` and configures it to run as a scheduled job.(Although it later uses the `ntpdate-debian` binary, see `man ntpdate`).
 The reason for this one may found after struggling to sync the time via NTP daemon without exposing the external network interface to the world.
 
@@ -74,7 +75,6 @@ but leaving the recipe in *run_list()* and the role configuration *(sometimes is
   ]
 }
 ```
-
 
 Contributing
 ------------
