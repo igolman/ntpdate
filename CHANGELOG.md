@@ -1,6 +1,12 @@
 ntpdate CHANGELOG
 =================
 
+1.4.1
+-----
+- [golman]
+    - configured `github actions`.
+    - added tests reporting.
+
 1.4.0
 -----
 - [golman]
