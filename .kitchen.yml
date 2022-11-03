@@ -45,6 +45,10 @@ platforms:
     driver:
       image: dokken/ubuntu-20.04
       pid_one_command: /bin/systemd
+  - name: ubuntu-22.04
+    driver:
+      image: dokken/ubuntu-22.04
+      pid_one_command: /bin/systemd
 
 suites:
   - name: default_chef13
@@ -79,6 +83,18 @@ suites:
       <<: *default_verifier
     run_list:
       - recipe[ntpdate]
+    provisioner:
+      chef_binary: /opt/cinc/bin/chef-client
+
+  - name: default_chef17
+    driver:
+      chef_version: '17.1.35'
+    verifier:
+      <<: *default_verifier
+    run_list:
+      - recipe[ntpdate]
+    provisioner:
+      chef_binary: /opt/cinc/bin/chef-client
 
   - name: custom_chef13
     driver:
@@ -131,6 +147,20 @@ suites:
       - recipe[ntpdate]
     attributes:
       <<: *custom_attributes
+    provisioner:
+      chef_binary: /opt/cinc/bin/chef-client
+
+  - name: custom_chef17
+    driver:
+      chef_version: '17.1.35'
+    verifier:
+      <<: *custom_verifier
+    run_list:
+      - recipe[ntpdate]
+    attributes:
+      <<: *custom_attributes
+    provisioner:
+      chef_binary: /opt/cinc/bin/chef-client
 
   - name: disabled_chef13
     driver:
@@ -183,4 +213,17 @@ suites:
       - recipe[ntpdate]
     attributes:
       <<: *disabled_attributes
+    provisioner:
+      chef_binary: /opt/cinc/bin/chef-client
 
+  - name: disabled_chef17
+    driver:
+      chef_version: '17.1.35'
+    verifier:
+      <<: *disabled_verifier
+    run_list:
+      - recipe[ntpdate]
+    attributes:
+      <<: *disabled_attributes
+    provisioner:
+      chef_binary: /opt/cinc/bin/chef-client
