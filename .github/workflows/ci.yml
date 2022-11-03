@@ -34,6 +34,7 @@ jobs:
         run: chef exec cookstyle --display-cop-names --extra-details --format ju -o cookstyle.xml .
         env:
           CHEF_LICENSE: accept-no-persist
+      - name: Upload cookstyle results
         uses: actions/upload-artifact@v3
         if: success() || failure()
         with:
