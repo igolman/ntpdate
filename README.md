@@ -1,4 +1,4 @@
-[![Test Report](https://github.com/igolman/ntpdate/actions/workflows/test-report.yml/badge.svg)](https://github.com/igolman/ntpdate/actions/workflows/test-report.yml)
+[![CI](https://github.com/igolman/ntpdate/actions/workflows/ci.yml/badge.svg)](https://github.com/igolman/ntpdate/actions/workflows/ci.yml)
 
 ntpdate Cookbook
 ----------------
