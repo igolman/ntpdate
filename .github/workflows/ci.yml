@@ -53,12 +53,12 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-1404
+          # - ubuntu-1404
           - ubuntu-1604
           - ubuntu-1804
           - ubuntu-2004
         suite:
-          - default-chef13
+          # - default-chef13
           - default-chef14
           - default-chef15
           - default-chef16
