@@ -1,5 +1,5 @@
 ---
-name: ci
+name: 'ci'
 "on":
   pull_request:
   push:
@@ -53,22 +53,22 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-1404
+          # - ubuntu-1404
           - ubuntu-1604
           - ubuntu-1804
           - ubuntu-2004
         suite:
-          - default-chef13
-          - default-chef14
-          - default-chef15
+          # - default-chef13
+          # - default-chef14
+          # - default-chef15
           - default-chef16
-          - custom-chef13
-          - custom-chef14
-          - custom-chef15
+          # - custom-chef13
+          # - custom-chef14
+          # - custom-chef15
           - custom-chef16
-          - disabled-chef13
-          - disabled-chef14
-          - disabled-chef15
+          # - disabled-chef13
+          # - disabled-chef14
+          # - disabled-chef15
           - disabled-chef16
       # include:
       #   - os: ubuntu-2004
