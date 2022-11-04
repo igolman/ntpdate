@@ -3,7 +3,7 @@ name: 'Test Report'
 "on":
   workflow_run:
     workflows:
-      - CI
+      - ci
     types:
       - completed
 jobs:
