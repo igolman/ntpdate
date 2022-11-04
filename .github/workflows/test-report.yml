@@ -14,4 +14,4 @@ jobs:
           artifact: kitchen-results
           name: Kitchen Tests
           path: '*chef*ubuntu*.xml'
-          reporter: jest-junit
+          reporter: java-junit
