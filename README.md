@@ -1,3 +1,5 @@
+[![Test Report](https://github.com/igolman/ntpdate/actions/workflows/test-report.yml/badge.svg)](https://github.com/igolman/ntpdate/actions/workflows/test-report.yml)
+
 ntpdate Cookbook
 ----------------
 
