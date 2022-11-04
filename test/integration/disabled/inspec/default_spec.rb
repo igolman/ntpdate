@@ -11,5 +11,3 @@ end
 describe file('/etc/cron.d/ntpdate') do
   it { should_not exist }
 end
-
-
