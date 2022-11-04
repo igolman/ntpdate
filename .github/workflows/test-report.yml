@@ -9,7 +9,7 @@ jobs:
   report:
     runs-on: ubuntu-latest
     steps:
-      - uses: dorny/test-reporter@v3
+      - uses: dorny/test-reporter@v1
         with:
           artifact: kitchen-results
           name: Kitchen Tests
