@@ -34,15 +34,15 @@ jobs:
         env:
           CHEF_LICENSE: accept-no-persis
       - name: Run Cookstyle
-        run: chef exec cookstyle -D -E -f ju -o cookstyle.xml .
+        run: chef exec cookstyle -D -E -f github
         env:
           CHEF_LICENSE: accept-no-persist
-      - name: Upload cookstyle results
-        uses: actions/upload-artifact@v3
-        if: success() || failure()
-        with:
-          name: cookstyle-results
-          path: cookstyle.xml
+      # - name: Upload cookstyle results
+      #   uses: actions/upload-artifact@v3
+      #  if: success() || failure()
+      #  with:
+      #    name: cookstyle-results
+      #    path: cookstyle.xml
 
   kitchen:
     runs-on: ubuntu-latest
