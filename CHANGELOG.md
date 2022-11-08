@@ -1,6 +1,12 @@
 ntpdate CHANGELOG
 =================
 
+1.5.1
+-----
+
+- no functional changes. Bump version to conform supermarket requirements.
+- added TESTING.md file.
+
 1.5.0
 -----
 
