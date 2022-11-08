@@ -51,7 +51,7 @@ platforms:
       pid_one_command: /bin/systemd
 
 suites:
-  - name: default_chef13
+  - name: default-chef13
     driver:
       chef_version: '13'
     verifier: &default_verifier
@@ -63,7 +63,7 @@ suites:
     run_list: &default_runlist
       - recipe[ntpdate]
 
-  - name: default_chef14
+  - name: default-chef14
     driver:
       chef_version: '14'
     verifier:
@@ -71,7 +71,7 @@ suites:
     run_list:
       - *default_runlist
 
-  - name: default_chef15
+  - name: default-chef15
     driver:
       chef_version: '15'
     verifier:
@@ -79,28 +79,24 @@ suites:
     run_list:
       - *default_runlist
 
-  - name: default_chef16
+  - name: default-chef16
     driver:
       chef_version: '16'
     verifier:
       <<: *default_verifier
     run_list:
       - *default_runlist
-    provisioner:
-      chef_binary: /opt/cinc/bin/chef-client
 
-  - name: default_chef17
+  - name: default-chef17
     driver:
       chef_version: '17.1.35'
     verifier:
       <<: *default_verifier
     run_list:
       - *default_runlist
-    provisioner:
-      chef_binary: /opt/cinc/bin/chef-client
 
 
-  - name: custom_chef13
+  - name: custom-chef13
     driver:
       chef_version: '13'
     verifier: &custom_verifier
@@ -125,7 +121,7 @@ suites:
           hour: 6
           weekday: sun
 
-  - name: custom_chef14
+  - name: custom-chef14
     driver:
       chef_version: '14'
     verifier:
@@ -135,7 +131,7 @@ suites:
     attributes:
       <<: *custom_attributes
 
-  - name: custom_chef15
+  - name: custom-chef15
     driver:
       chef_version: '15'
     verifier:
@@ -145,7 +141,7 @@ suites:
     attributes:
       <<: *custom_attributes
 
-  - name: custom_chef16
+  - name: custom-chef16
     driver:
       chef_version: '16'
     verifier:
@@ -154,10 +150,8 @@ suites:
       - *default_runlist
     attributes:
       <<: *custom_attributes
-    provisioner:
-      chef_binary: /opt/cinc/bin/chef-client
 
-  - name: custom_chef17
+  - name: custom-chef17
     driver:
       chef_version: '17.1.35'
     verifier:
@@ -166,10 +160,8 @@ suites:
       - recipe[ntpdate]
     attributes:
       <<: *custom_attributes
-    provisioner:
-      chef_binary: /opt/cinc/bin/chef-client
 
-  - name: disabled_chef13
+  - name: disabled-chef13
     driver:
       chef_version: '13'
     verifier: &disabled_verifier
@@ -194,7 +186,7 @@ suites:
           hour: 6
           day: 7
 
-  - name: disabled_chef14
+  - name: disabled-chef14
     driver:
       chef_version: '14'
     verifier:
@@ -204,7 +196,7 @@ suites:
     attributes:
       <<: *disabled_attributes
 
-  - name: disabled_chef15
+  - name: disabled-chef15
     driver:
       chef_version: '15'
     verifier:
@@ -214,7 +206,7 @@ suites:
     attributes:
       <<: *disabled_attributes
 
-  - name: disabled_chef16
+  - name: disabled-chef16
     driver:
       chef_version: '16'
     verifier:
@@ -223,10 +215,8 @@ suites:
       - *default_runlist
     attributes:
       <<: *disabled_attributes
-    provisioner:
-      chef_binary: /opt/cinc/bin/chef-client
 
-  - name: disabled_chef17
+  - name: disabled-chef17
     driver:
       chef_version: '17.1.35'
     verifier:
@@ -235,5 +225,3 @@ suites:
       - recipe[ntpdate]
     attributes:
       <<: *disabled_attributes
-    provisioner:
-      chef_binary: /opt/cinc/bin/chef-client
