@@ -57,6 +57,7 @@ jobs:
           - ubuntu-1604
           - ubuntu-1804
           - ubuntu-2004
+          - ubuntu-2204
         suite:
           # - default-chef13
           - default-chef14
