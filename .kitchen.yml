@@ -45,9 +45,13 @@ platforms:
     driver:
       image: dokken/ubuntu-20.04
       pid_one_command: /bin/systemd
+  - name: ubuntu-22.04
+    driver:
+      image: dokken/ubuntu-22.04
+      pid_one_command: /bin/systemd
 
 suites:
-  - name: default_chef13
+  - name: default-chef13
     driver:
       chef_version: '13'
     verifier: &default_verifier
@@ -59,7 +63,7 @@ suites:
     run_list: &default_runlist
       - recipe[ntpdate]
 
-  - name: default_chef14
+  - name: default-chef14
     driver:
       chef_version: '14'
     verifier:
@@ -67,7 +71,7 @@ suites:
     run_list:
       - *default_runlist
 
-  - name: default_chef15
+  - name: default-chef15
     driver:
       chef_version: '15'
     verifier:
@@ -75,7 +79,7 @@ suites:
     run_list:
       - *default_runlist
 
-  - name: default_chef16
+  - name: default-chef16
     driver:
       chef_version: '16'
     verifier:
@@ -83,7 +87,15 @@ suites:
     run_list:
       - *default_runlist
 
-  - name: custom_chef13
+  - name: default-chef17
+    driver:
+      chef_version: '17.1.35'
+    verifier:
+      <<: *default_verifier
+    run_list:
+      - *default_runlist
+
+  - name: custom-chef13
     driver:
       chef_version: '13'
     verifier: &custom_verifier
@@ -108,7 +120,7 @@ suites:
           hour: 6
           weekday: sun
 
-  - name: custom_chef14
+  - name: custom-chef14
     driver:
       chef_version: '14'
     verifier:
@@ -118,7 +130,7 @@ suites:
     attributes:
       <<: *custom_attributes
 
-  - name: custom_chef15
+  - name: custom-chef15
     driver:
       chef_version: '15'
     verifier:
@@ -128,7 +140,7 @@ suites:
     attributes:
       <<: *custom_attributes
 
-  - name: custom_chef16
+  - name: custom-chef16
     driver:
       chef_version: '16'
     verifier:
@@ -138,7 +150,17 @@ suites:
     attributes:
       <<: *custom_attributes
 
-  - name: disabled_chef13
+  - name: custom-chef17
+    driver:
+      chef_version: '17.1.35'
+    verifier:
+      <<: *custom_verifier
+    run_list:
+      - recipe[ntpdate]
+    attributes:
+      <<: *custom_attributes
+
+  - name: disabled-chef13
     driver:
       chef_version: '13'
     verifier: &disabled_verifier
@@ -163,7 +185,7 @@ suites:
           hour: 6
           day: 7
 
-  - name: disabled_chef14
+  - name: disabled-chef14
     driver:
       chef_version: '14'
     verifier:
@@ -173,7 +195,7 @@ suites:
     attributes:
       <<: *disabled_attributes
 
-  - name: disabled_chef15
+  - name: disabled-chef15
     driver:
       chef_version: '15'
     verifier:
@@ -183,12 +205,22 @@ suites:
     attributes:
       <<: *disabled_attributes
 
-  - name: disabled_chef16
+  - name: disabled-chef16
     driver:
       chef_version: '16'
     verifier:
       <<: *disabled_verifier
     run_list:
       - *default_runlist
+    attributes:
+      <<: *disabled_attributes
+
+  - name: disabled-chef17
+    driver:
+      chef_version: '17.1.35'
+    verifier:
+      <<: *disabled_verifier
+    run_list:
+      - recipe[ntpdate]
     attributes:
       <<: *disabled_attributes

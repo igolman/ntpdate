@@ -1,6 +1,11 @@
 ntpdate CHANGELOG
 =================
 
+1.5.0
+-----
+
+- added support chef `v17` and `Ubuntu 22.04`
+
 1.4.1
 -----
 

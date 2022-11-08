@@ -57,19 +57,23 @@ jobs:
           - ubuntu-1604
           - ubuntu-1804
           - ubuntu-2004
+          - ubuntu-2204
         suite:
           # - default-chef13
           - default-chef14
           - default-chef15
           - default-chef16
+          - default-chef17
           - custom-chef13
           - custom-chef14
           - custom-chef15
           - custom-chef16
+          - custom-chef17
           - disabled-chef13
           - disabled-chef14
           - disabled-chef15
           - disabled-chef16
+          - disabled-chef17
       # include:
       #   - os: ubuntu-2004
       #     suite: openjdk-pkg-14
