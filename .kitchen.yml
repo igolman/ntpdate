@@ -53,36 +53,39 @@ platforms:
 suites:
   - name: default_chef13
     driver:
-      chef_version: '13.12.3'
+      chef_version: '13'
     verifier: &default_verifier
       inspec_tests:
         - test/integration/default/inspec
-    run_list:
+      reporter:
+        - cli
+        - junit:kitchen-reports/%{suite}-%{platform}.xml
+    run_list: &default_runlist
       - recipe[ntpdate]
 
   - name: default_chef14
     driver:
-      chef_version: '14.15.6'
+      chef_version: '14'
     verifier:
       <<: *default_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
 
   - name: default_chef15
     driver:
-      chef_version: '15.12.24'
+      chef_version: '15'
     verifier:
       <<: *default_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
 
   - name: default_chef16
     driver:
-      chef_version: '16.1.0'
+      chef_version: '16'
     verifier:
       <<: *default_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     provisioner:
       chef_binary: /opt/cinc/bin/chef-client
 
@@ -92,18 +95,22 @@ suites:
     verifier:
       <<: *default_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     provisioner:
       chef_binary: /opt/cinc/bin/chef-client
 
+
   - name: custom_chef13
     driver:
-      chef_version: '13.12.3'
+      chef_version: '13'
     verifier: &custom_verifier
       inspec_tests:
         - test/integration/custom/inspec
+      reporter:
+        - cli
+        - junit:kitchen-reports/%{suite}-%{platform}.xml
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     attributes: &custom_attributes
       ntpdate:
         enable: true
@@ -120,31 +127,31 @@ suites:
 
   - name: custom_chef14
     driver:
-      chef_version: '14.15.6'
+      chef_version: '14'
     verifier:
       <<: *custom_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     attributes:
       <<: *custom_attributes
 
   - name: custom_chef15
     driver:
-      chef_version: '15.12.24'
+      chef_version: '15'
     verifier:
       <<: *custom_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     attributes:
       <<: *custom_attributes
 
   - name: custom_chef16
     driver:
-      chef_version: '16.1.0'
+      chef_version: '16'
     verifier:
       <<: *custom_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     attributes:
       <<: *custom_attributes
     provisioner:
@@ -164,12 +171,15 @@ suites:
 
   - name: disabled_chef13
     driver:
-      chef_version: '13.12.3'
+      chef_version: '13'
     verifier: &disabled_verifier
       inspec_tests:
         - test/integration/disabled/inspec
+      reporter:
+        - cli
+        - junit:kitchen-reports/%{suite}-%{platform}.xml
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     attributes: &disabled_attributes
       ntpdate:
         enable: false
@@ -186,31 +196,31 @@ suites:
 
   - name: disabled_chef14
     driver:
-      chef_version: '14.15.6'
+      chef_version: '14'
     verifier:
       <<: *disabled_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     attributes:
       <<: *disabled_attributes
 
   - name: disabled_chef15
     driver:
-      chef_version: '15.12.24'
+      chef_version: '15'
     verifier:
       <<: *disabled_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     attributes:
       <<: *disabled_attributes
 
   - name: disabled_chef16
     driver:
-      chef_version: '16.1.0'
+      chef_version: '16'
     verifier:
       <<: *disabled_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     attributes:
       <<: *disabled_attributes
     provisioner:
