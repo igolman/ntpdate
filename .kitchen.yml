@@ -95,7 +95,6 @@ suites:
     run_list:
       - *default_runlist
 
-
   - name: custom-chef13
     driver:
       chef_version: '13'
