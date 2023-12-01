@@ -1,6 +1,11 @@
 ntpdate CHANGELOG
 =================
 
+1.6.0
+-----
+
+- added support for chef `v18`
+
 1.5.1
 -----
 
