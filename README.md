@@ -1,4 +1,6 @@
-[![CI](https://github.com/igolman/ntpdate/actions/workflows/ci.yml/badge.svg)](https://github.com/igolman/ntpdate/actions/workflows/ci.yml)
+[![CI State](https://github.com/igolman/ntpdate/actions/workflows/ci.yml/badge.svg)](https://github.com/igolman/ntpdate/actions/workflows/ci.yml)
+[![Cookbook Version](https://img.shields.io/cookbook/v/ntpdate.svg)](https://supermarket.chef.io/cookbooks/ntpdate)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ntpdate Cookbook
 ----------------
