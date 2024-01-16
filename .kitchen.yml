@@ -50,6 +50,8 @@ platforms:
       image: dokken/ubuntu-22.04
       pid_one_command: /bin/systemd
 
+chef18: &chef18 '18.3.0'
+
 suites:
   - name: default-chef13
     driver:
@@ -90,6 +92,14 @@ suites:
   - name: default-chef17
     driver:
       chef_version: '17.1.35'
+    verifier:
+      <<: *default_verifier
+    run_list:
+      - *default_runlist
+
+  - name: default-chef18
+    driver:
+      chef_version: *chef18
     verifier:
       <<: *default_verifier
     run_list:
@@ -160,6 +170,16 @@ suites:
     attributes:
       <<: *custom_attributes
 
+  - name: custom-chef18
+    driver:
+      chef_version: *chef18
+    verifier:
+      <<: *custom_verifier
+    run_list:
+      - recipe[ntpdate]
+    attributes:
+      <<: *custom_attributes
+
   - name: disabled-chef13
     driver:
       chef_version: '13'
@@ -218,6 +238,16 @@ suites:
   - name: disabled-chef17
     driver:
       chef_version: '17.1.35'
+    verifier:
+      <<: *disabled_verifier
+    run_list:
+      - recipe[ntpdate]
+    attributes:
+      <<: *disabled_attributes
+
+  - name: disabled-chef18
+    driver:
+      chef_version: *chef18
     verifier:
       <<: *disabled_verifier
     run_list:
