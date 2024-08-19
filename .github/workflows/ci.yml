@@ -53,28 +53,15 @@ jobs:
     strategy:
       matrix:
         os:
-          # - ubuntu-1404
-          - ubuntu-1604
           - ubuntu-1804
           - ubuntu-2004
           - ubuntu-2204
+          - ubuntu-2404
         suite:
-          # - default-chef13
-          - default-chef14
-          - default-chef15
-          - default-chef16
           - default-chef17
           - default-chef18
-          - custom-chef13
-          - custom-chef14
-          - custom-chef15
-          - custom-chef16
           - custom-chef17
           - custom-chef18
-          - disabled-chef13
-          - disabled-chef14
-          - disabled-chef15
-          - disabled-chef16
           - disabled-chef17
           - disabled-chef18
       # include:
