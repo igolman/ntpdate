@@ -1,6 +1,12 @@
 ntpdate CHANGELOG
 =================
 
+1.7.0
+-----
+
+- added tests for `Ubuntu 24.04`
+- removed EOL `chef`/`Ubuntu X.Y` tests.
+
 1.6.0
 -----
 

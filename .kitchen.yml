@@ -7,6 +7,7 @@ driver:
   pull_chef_image: false
   pull_platform_image: false
   clean_dokken_sandbox: false
+  pid_one_command: /bin/systemd
   intermediate_instructions:
     - RUN /usr/bin/apt-get update --fix-missing
   use_cache: true
@@ -27,35 +28,27 @@ verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-14.04
-    driver:
-      image: dokken/ubuntu-14.04
-      pid_one_command: /sbin/init
-      cap_add:
-        - SYS_ADMIN
-  - name: ubuntu-16.04
-    driver:
-      image: dokken/ubuntu-16.04
-      pid_one_command: /bin/systemd
   - name: ubuntu-18.04
     driver:
       image: dokken/ubuntu-18.04
-      pid_one_command: /bin/systemd
   - name: ubuntu-20.04
     driver:
       image: dokken/ubuntu-20.04
-      pid_one_command: /bin/systemd
   - name: ubuntu-22.04
     driver:
       image: dokken/ubuntu-22.04
-      pid_one_command: /bin/systemd
+  - name: ubuntu-22.04
+    driver:
+      image: dokken/ubuntu-22.04
 
-chef18: &chef18 '18.3.0'
+
+chef17: &chef17 '17.10.0'
+chef18: &chef18 '18.4.12'
 
 suites:
-  - name: default-chef13
+  - name: default-chef17
     driver:
-      chef_version: '13'
+      chef_version: *chef17
     verifier: &default_verifier
       inspec_tests:
         - test/integration/default/inspec
@@ -65,38 +58,6 @@ suites:
     run_list: &default_runlist
       - recipe[ntpdate]
 
-  - name: default-chef14
-    driver:
-      chef_version: '14'
-    verifier:
-      <<: *default_verifier
-    run_list:
-      - *default_runlist
-
-  - name: default-chef15
-    driver:
-      chef_version: '15'
-    verifier:
-      <<: *default_verifier
-    run_list:
-      - *default_runlist
-
-  - name: default-chef16
-    driver:
-      chef_version: '16'
-    verifier:
-      <<: *default_verifier
-    run_list:
-      - *default_runlist
-
-  - name: default-chef17
-    driver:
-      chef_version: '17.1.35'
-    verifier:
-      <<: *default_verifier
-    run_list:
-      - *default_runlist
-
   - name: default-chef18
     driver:
       chef_version: *chef18
@@ -105,9 +66,9 @@ suites:
     run_list:
       - *default_runlist
 
-  - name: custom-chef13
+  - name: custom-chef17
     driver:
-      chef_version: '13'
+      chef_version: *chef17
     verifier: &custom_verifier
       inspec_tests:
         - test/integration/custom/inspec
@@ -130,59 +91,19 @@ suites:
           hour: 6
           weekday: sun
 
-  - name: custom-chef14
-    driver:
-      chef_version: '14'
-    verifier:
-      <<: *custom_verifier
-    run_list:
-      - *default_runlist
-    attributes:
-      <<: *custom_attributes
-
-  - name: custom-chef15
-    driver:
-      chef_version: '15'
-    verifier:
-      <<: *custom_verifier
-    run_list:
-      - *default_runlist
-    attributes:
-      <<: *custom_attributes
-
-  - name: custom-chef16
-    driver:
-      chef_version: '16'
-    verifier:
-      <<: *custom_verifier
-    run_list:
-      - *default_runlist
-    attributes:
-      <<: *custom_attributes
-
-  - name: custom-chef17
-    driver:
-      chef_version: '17.1.35'
-    verifier:
-      <<: *custom_verifier
-    run_list:
-      - recipe[ntpdate]
-    attributes:
-      <<: *custom_attributes
-
   - name: custom-chef18
     driver:
       chef_version: *chef18
     verifier:
       <<: *custom_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     attributes:
       <<: *custom_attributes
 
-  - name: disabled-chef13
+  - name: disabled-chef17
     driver:
-      chef_version: '13'
+      chef_version: *chef17
     verifier: &disabled_verifier
       inspec_tests:
         - test/integration/disabled/inspec
@@ -205,52 +126,12 @@ suites:
           hour: 6
           day: 7
 
-  - name: disabled-chef14
-    driver:
-      chef_version: '14'
-    verifier:
-      <<: *disabled_verifier
-    run_list:
-      - *default_runlist
-    attributes:
-      <<: *disabled_attributes
-
-  - name: disabled-chef15
-    driver:
-      chef_version: '15'
-    verifier:
-      <<: *disabled_verifier
-    run_list:
-      - *default_runlist
-    attributes:
-      <<: *disabled_attributes
-
-  - name: disabled-chef16
-    driver:
-      chef_version: '16'
-    verifier:
-      <<: *disabled_verifier
-    run_list:
-      - *default_runlist
-    attributes:
-      <<: *disabled_attributes
-
-  - name: disabled-chef17
-    driver:
-      chef_version: '17.1.35'
-    verifier:
-      <<: *disabled_verifier
-    run_list:
-      - recipe[ntpdate]
-    attributes:
-      <<: *disabled_attributes
-
   - name: disabled-chef18
     driver:
       chef_version: *chef18
     verifier:
       <<: *disabled_verifier
     run_list:
-      - recipe[ntpdate]
+      - *default_runlist
     attributes:
       <<: *disabled_attributes
