@@ -37,13 +37,12 @@ platforms:
   - name: ubuntu-22.04
     driver:
       image: dokken/ubuntu-22.04
-  - name: ubuntu-22.04
+  - name: ubuntu-24.04
     driver:
-      image: dokken/ubuntu-22.04
+      image: dokken/ubuntu-24.04
 
-
-chef17: &chef17 '17.10.0'
-chef18: &chef18 '18.3.0'
+chef17: &chef17 '17'
+chef18: &chef18 '18'
 
 suites:
   - name: default-chef17
