@@ -43,7 +43,7 @@ platforms:
 
 
 chef17: &chef17 '17.10.0'
-chef18: &chef18 '18.4.12'
+chef18: &chef18 '18.3.0'
 
 suites:
   - name: default-chef17
