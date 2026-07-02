@@ -1,6 +1,12 @@
 ntpdate CHANGELOG
 =================
 
+1.8.0
+-----
+
+- added tests for `Ubuntu 26.04`
+- removed EOL `chef v17` and `ubuntu 18.04` tests.
+
 1.7.0
 -----
 

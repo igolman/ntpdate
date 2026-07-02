@@ -1,5 +1,9 @@
-describe package('ntpdate') do
-  it { should be_installed }
+ntp_packages = Gem::Version.new(os[:release]) > Gem::Version.new('24.04') ? %w(ntpsec-ntpdate) : %w(ntpdate)
+
+ntp_packages.each do |pkg|
+  describe package(pkg) do
+    it { should be_installed }
+  end
 end
 
 describe file('/etc/default/ntpdate') do

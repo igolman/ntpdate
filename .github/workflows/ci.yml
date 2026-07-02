@@ -53,25 +53,42 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-1804
           - ubuntu-2004
           - ubuntu-2204
           - ubuntu-2404
+          - ubuntu-2604
         suite:
-          - default-chef17
           - default-chef18
-          - custom-chef17
+          - default-chef19
           - custom-chef18
-          - disabled-chef17
+          - custom-chef19
           - disabled-chef18
-      # include:
-      #   - os: ubuntu-2004
-      #     suite: openjdk-pkg-14
-      # exclude:
-      #   - os: debian-9
-      #     suite: openjdk-pkg-11
-      #   - os: debian-10
-      #     suite: openjdk-pkg-8
+          - disabled-chef19
+        exclude:
+          - os: ubuntu-2004
+            suite: default-chef19
+          - os: ubuntu-2004
+            suite: custom-chef19
+          - os: ubuntu-2004
+            suite: disabled-chef19
+          - os: ubuntu-2204
+            suite: default-chef19
+          - os: ubuntu-2204
+            suite: custom-chef19
+          - os: ubuntu-2204
+            suite: disabled-chef19
+          - os: ubuntu-2404
+            suite: default-chef19
+          - os: ubuntu-2404
+            suite: custom-chef19
+          - os: ubuntu-2404
+            suite: disabled-chef19
+          - os: ubuntu-2604
+            suite: default-chef18
+          - os: ubuntu-2604
+            suite: custom-chef18
+          - os: ubuntu-2604
+            suite: disabled-chef18
       fail-fast: false
     steps:
       - name: Check out code
@@ -87,7 +104,7 @@ jobs:
           suite: ${{ matrix.suite }}
           os: ${{ matrix.os }}
       - name: Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: success() || failure()
         with:
           name: kitchen-results
