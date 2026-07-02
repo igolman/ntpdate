@@ -40,14 +40,19 @@ platforms:
   - name: ubuntu-24.04
     driver:
       image: dokken/ubuntu-24.04
+  - name: ubuntu-26.04
+    driver:
+      image: dokken/ubuntu-26.04
+      pid_one_command: /usr/lib/systemd/systemd
 
-chef17: &chef17 '17'
+
 chef18: &chef18 '18'
+chef19: &chef19 '19'
 
 suites:
-  - name: default-chef17
+  - name: default-chef18
     driver:
-      chef_version: *chef17
+      chef_version: *chef18
     verifier: &default_verifier
       inspec_tests:
         - test/integration/default/inspec
@@ -57,17 +62,17 @@ suites:
     run_list: &default_runlist
       - recipe[ntpdate]
 
-  - name: default-chef18
+  - name: default-chef19
     driver:
-      chef_version: *chef18
+      chef_version: *chef19
     verifier:
       <<: *default_verifier
     run_list:
       - *default_runlist
 
-  - name: custom-chef17
+  - name: custom-chef18
     driver:
-      chef_version: *chef17
+      chef_version: *chef18
     verifier: &custom_verifier
       inspec_tests:
         - test/integration/custom/inspec
@@ -90,9 +95,9 @@ suites:
           hour: 6
           weekday: sun
 
-  - name: custom-chef18
+  - name: custom-chef19
     driver:
-      chef_version: *chef18
+      chef_version: *chef19
     verifier:
       <<: *custom_verifier
     run_list:
@@ -100,9 +105,9 @@ suites:
     attributes:
       <<: *custom_attributes
 
-  - name: disabled-chef17
+  - name: disabled-chef18
     driver:
-      chef_version: *chef17
+      chef_version: *chef18
     verifier: &disabled_verifier
       inspec_tests:
         - test/integration/disabled/inspec
@@ -125,9 +130,9 @@ suites:
           hour: 6
           day: 7
 
-  - name: disabled-chef18
+  - name: disabled-chef19
     driver:
-      chef_version: *chef18
+      chef_version: *chef19
     verifier:
       <<: *disabled_verifier
     run_list:
