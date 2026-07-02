@@ -88,7 +88,7 @@ jobs:
           suite: ${{ matrix.suite }}
           os: ${{ matrix.os }}
       - name: Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: success() || failure()
         with:
           name: kitchen-results
