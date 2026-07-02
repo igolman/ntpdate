@@ -11,7 +11,7 @@ default['ntpdate']['config_file'] = 'ntpdate'
 default['ntpdate']['ntp_servers'] = %w(pool.ntp.org)
 default['ntpdate']['ntp_options'] = nil
 default['ntpdate']['package_name'] =
-  Gem::Version.new(node["platform_version"]) > Gem::Version.new('24.04') ? %w(ntpsec-ntpdate) : %w(ntpdate)
+  Gem::Version.new(node['platform_version']) > Gem::Version.new('24.04') ? %w(ntpsec-ntpdate) : %w(ntpdate)
 default['ntpdate']['crontab']['minute'] = '0'
 default['ntpdate']['crontab']['hour'] = '5'
 default['ntpdate']['crontab']['day'] = '*'
