@@ -44,7 +44,7 @@ platforms:
 
 
 chef18: &chef18 '18'
-chef19: &chef19 '19'
+chef19: &chef19 '19.2.12'
 
 suites:
   - name: default-chef18
