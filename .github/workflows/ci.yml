@@ -53,7 +53,6 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-1804
           - ubuntu-2004
           - ubuntu-2204
           - ubuntu-2404
@@ -66,12 +65,6 @@ jobs:
           - disabled-chef18
           - disabled-chef19
         exclude:
-          - os: ubuntu-1804
-            suite: default-chef19
-          - os: ubuntu-1804
-            suite: custom-chef19
-          - os: ubuntu-1804
-            suite: disabled-chef19
           - os: ubuntu-2004
             suite: default-chef19
           - os: ubuntu-2004
