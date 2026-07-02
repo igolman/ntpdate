@@ -4,8 +4,8 @@ driver:
   provision: true
   use_sudo: false
   privileged: true
-  pull_chef_image: false
-  pull_platform_image: false
+  pull_chef_image: true
+  pull_platform_image: true
   clean_dokken_sandbox: true
   pid_one_command: /bin/systemd
   intermediate_instructions:
@@ -17,7 +17,7 @@ driver:
 provisioner:
   name: dokken
   deprecations_as_errors: true
-  chef_binary: /opt/cinc/bin/chef-client
+  chef_binary: /opt/cinc/bin/cinc-client
   multiple_converge: 2
   enforce_idempotency: true
   client_rb:
