@@ -6,16 +6,18 @@ driver:
   privileged: true
   pull_chef_image: false
   pull_platform_image: false
-  clean_dokken_sandbox: false
+  clean_dokken_sandbox: true
   pid_one_command: /bin/systemd
   intermediate_instructions:
     - RUN /usr/bin/apt-get update --fix-missing
   use_cache: true
   hostname: ntpdate.example.com
+  chef_image: cincproject/cinc
 
 provisioner:
   name: dokken
   deprecations_as_errors: true
+  chef_binary: /opt/cinc/bin/chef-client
   multiple_converge: 2
   enforce_idempotency: true
   client_rb:
